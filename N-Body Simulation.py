@@ -9,7 +9,7 @@ sun_vel_all = 16
 sun_loc = 8.5126e-3 * AU
 
 #Simulation Time
-days = 365
+days = 365 #Adjust to change duration of simulation
 dt = 86400
 T = dt*days
 
@@ -90,9 +90,12 @@ class Planet:
         self.time = self.time + dt
         self.time_list.append(self.time)
 
-#Initializing parameters for objects in Planet class                 
+#Initializing parameters for objects in Planet class  
+#Parameters can be freely adjusted
+#Parameters in order - Name, Initial position [x, y], Initial Velocity [x, y], Mass, Kinetic Energy, Momentum, Time, Colour
+#Kinetic Energy, Momentum and Time don't need to be adjusted. They're only included if the values need to be viewed or plotted
 sun =      Planet( 'Sun',      np.array([0, 0]),            np.array([0, 0]),        1.98892 * 10**30, 0, 0, 0, 'salmon')
-asteroid = Planet( 'Asteroid', np.array([-0.6*AU, 0.5*AU]), np.array([0, 20000]), 0.95 * 10**20,    0, 0, 0, 'brown')
+asteroid = Planet( 'Asteroid', np.array([-0.6*AU, 0.5*AU]), np.array([0, 20000]),    0.95 * 10**20,    0, 0, 0, 'brown')
 mercury =  Planet( 'Mercury',  np.array([-0.39*AU, 0]),     np.array([0, 47360]),    3.285 * 10**23,   0, 0, 0, 'black')
 venus =    Planet( 'Venus',    np.array([-0.7233*AU, 0]),   np.array([0, 35020]),    4.867 * 10**24,   0, 0, 0, 'grey')
 earth =    Planet( 'Earth',    np.array([-1*AU,0]),         np.array([0, 29783]),    5.9742 * 10**24,  0, 0, 0, 'green')
@@ -113,7 +116,7 @@ for t in np.arange(0, T, dt):
 
 #For loop for plotting updated locations for planets
 for planet in planets:
-    scale = 3e11
+    scale = 3e11 #Changes distance scale on plots - Adjust depending on distances of orbits in simulation
     x = [loc[0] for loc in planet.location_orbit]
     y = [loc[1] for loc in planet.location_orbit]
     plt.figure(2) 
