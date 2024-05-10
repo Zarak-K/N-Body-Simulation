@@ -1,0 +1,1 @@
+These two programs simulate N-Body motion using numerical integration to approximate the trajectories of moving objects. The implemented numerical integration technique is the 4th order Runge-Kutta method. The masses, initial positions and velocities can be adjusted freely to simulate a variety of interactions.
