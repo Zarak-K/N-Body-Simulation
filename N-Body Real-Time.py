@@ -2,7 +2,7 @@ import pygame
 import numpy as np
 pygame.init()
 
-#ZOOM IN AND OUT WITH ARROW KEYS
+#Arrow Keys can be used to zoom in and out
 
 #Initializing window and text
 width, height = 800, 800
@@ -15,7 +15,7 @@ AU = 1.495978707e11
 sun_loc = 8.5126e-3 * AU
 
 #Timestep
-days = 1
+days = 1 #Increase to speed up simulation
 dt = 86400*days
 
 #Colours
@@ -137,11 +137,15 @@ def main():
     clock = pygame.time.Clock()
     
     #Initializing characteristics of objects in planet class
+    #Parameters can be adjusted freely
+    #Parameters in order Name, Initial location [x, y], velocity [x, y], Mass, Kinetic Energy, Momentum, Colour, Size, Visibility parameter
+    #Kinetic Energy and Momentum don't need to be adjusted. They're only calculated in case they need to be visualized.
+    #Visibility parameter does not need to be adjusted, it's present to make the inner planets vanish when zooming out so they don't appear to be orbiting inside the sun
     sun = Planet      ('Sun',       np.array([sun_loc, 0]),      np.array([0, sun_vel_all]),   1.98892 * 10**30, 0, 0, yellow,    18, 10/AU)
     asteroid1 = Planet('Asteroid1', np.array([-3.279*AU, 0]),    np.array([0, 16448]),         0.95 * 10**15,    0, 0, brown,     8,  10/AU) #2:1 resonance
     asteroid2 = Planet('Asteroid2', np.array([-2.502*AU, 0]),    np.array([0, 18832]),         0.95 * 10**15,    0, 0, brown,     8,  10/AU) #3:1 resonance
     asteroid3 = Planet('Asteroid3', np.array([-1.780*AU, 0]),    np.array([0, 22328]),         0.95 * 10**15,    0, 0, brown,     8,  10/AU) #5:1 resonance
-    #asteroid4 = Planet('Asteroid4', np.array([-2.6*AU, 4.5*AU]), np.array([11274, 6554]),      0.95 * 10**15,    0, 0, brown,     8,  10/AU) #Lagrange point 
+    #asteroid4 = Planet('Asteroid4', np.array([-2.6*AU, 4.5*AU]), np.array([11274, 6554]),      0.95 * 10**15,    0, 0, brown,     8,  10/AU) #Lagrange point 5
     #asteroid5 = Planet('Asteroid5', np.array([-3.972*AU, 0]),    np.array([0, 14947]),         0.95 * 10**15,    0, 0, brown,     8,  10/AU) #3:2 resonance
     mercury = Planet  ('Mercury',   np.array([-0.39*AU, 0]),     np.array([0, 47360]),         3.285 * 10**23,   0, 0, dark_grey, 10, 150/AU)
     venus = Planet    ('Venus',     np.array([-0.7233*AU, 0]),   np.array([0, 35020]),         4.867 * 10**24,   0, 0, white,     15, 120/AU)
